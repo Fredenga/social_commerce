@@ -2,8 +2,8 @@ import Config
 
 # Configure your database
 config :social_commerce, SocialCommerce.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "root",
+  password: "secret",
   hostname: "localhost",
   database: "social_commerce_dev",
   stacktrace: true,
