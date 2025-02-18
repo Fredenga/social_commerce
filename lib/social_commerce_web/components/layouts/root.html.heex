@@ -11,7 +11,70 @@
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
-  <body class="bg-white">
-    {@inner_content}
+  <body class="">
+    <header class="w-screen text-white">
+      <nav class="bg-red-600 flex items-center justify-center gap-10 h-28">
+        <ul class="flex items-center px-6 py-2 gap-10 border border-white rounded-lg">
+          <li><a href="/">About</a></li>
+          <li><a href="/">Features</a></li>
+          <li><a href="/">Instagram Beta</a></li>
+          <li><a href="/">TikTok Alpha</a></li>
+          <li><a href="/">Whatsapp</a></li>
+        </ul>
+        <ul class="relative z-10 flex items-center gap-4 px-4 sm:px-6 lg:px-8 justify-end">
+          <%= if @current_user do %>
+            <li class="text-[0.8125rem] leading-6 text-white">
+              {@current_user.email}
+            </li>
+            <li>
+              <button>
+                <.link
+                  href={~p"/users/settings"}
+                  class="text-[0.8125rem] leading-6 text-white font-semibold "
+                >
+                  Settings
+                </.link>
+
+              </button>
+            </li>
+            <li>
+              <button>
+                <.link
+                  href={~p"/users/log_out"}
+                  method="delete"
+                  class="text-[0.8125rem] leading-6 text-white font-semibold "
+                >
+                  Log out
+                </.link>
+
+              </button>
+            </li>
+          <% else %>
+            <li>
+              <.link
+                href={~p"/users/register"}
+                class="text-[0.8125rem] leading-6 text-white font-semibold "
+              >
+                Register
+              </.link>
+            </li>
+            <li>
+              <.link
+                href={~p"/users/log_in"}
+                class="text-[0.8125rem] leading-6 text-white font-semibold "
+              >
+                Log in
+              </.link>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      
+    </header>
+    
+    <main>
+      
+      {@inner_content}
+    </main>
   </body>
 </html>
